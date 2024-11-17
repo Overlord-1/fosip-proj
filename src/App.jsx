@@ -1,12 +1,14 @@
-import { useState } from 'react'
+import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import ClaudeTest from './components/claudeTest'
+import Test from './components/Test'
 
-
-
-function App() {
-  return (
-    <div className="flex justify-center items-center h-screen font-bold bg-gray-800 text-green-300 text-6xl">
-      <h1>FOSIP project setup</h1>
-    </div>
+const App = () => {
+  return (  
+    <Routes>
+      <Route path="/" element={<Test />} />
+      <Route path="/claude" element={<ClaudeTest />} />
+    </Routes>
   )
 }
 
