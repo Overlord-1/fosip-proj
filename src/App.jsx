@@ -1,13 +1,15 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import ClaudeTest from './components/claudeTest'
+import Teacher from './components/Teacher'
 import Login from './components/Login'
+import Student from './components/Student'
 
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Login />} />
-      <Route path="/claude" element={<ClaudeTest />} />
+      <Route path="/teacher" element={<Teacher />} />
+      <Route path="/student" element={<Student />} />
     </Routes>
   )
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [userType, setUserType] = useState('student'); // Default user type is 'student'
@@ -8,6 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   // Handle user type switch
   const handleSwitchChange = (e) => {
@@ -23,6 +25,16 @@ const Login = () => {
     try {
       const response = await axios.post('http://localhost:3500/user/login', payload);
       console.log('Login successful', response.data);
+
+      const role = response.data.role;
+      console.log(role);
+
+      if (role && role.toLowerCase() === 'student') {
+        navigate('/student');
+      }
+      if (role && role.toLowerCase() === 'teacher') {
+        navigate('/teacher');
+      }
     } catch (error) {
       console.error('Login failed', error.response?.data?.message || error.message);
     }
